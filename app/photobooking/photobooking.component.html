@@ -1,0 +1,82 @@
+<div class="container">
+    <form id="bookingForm">
+        <h3>Book an Event</h3>
+        <label for="eventName">Event Name:</label>
+        <input type="text" id="eventName" placeholder="Enter event name" required>
+
+        <label for="eventDate">Event Date:</label>
+        <input type="date" id="eventDate" required>
+
+        <label for="eventTime">Event Time:</label>
+        <input type="time" id="eventTime" required>
+
+        <label for="participantName">Your Name:</label>
+        <input type="text" id="participantName" placeholder="Enter your name" required>
+
+        <label for="phoneNo">phone No:</label>
+        <input type="text" id="phoneNo" placeholder="Enter your  phone No" required>
+
+        <label for="emailId">email Id:</label>
+        <input type="text" id="emailId" placeholder="Enter your email Id" required>
+
+        <label for="Address">Your address:</label>
+        <input type="text" id="Address" placeholder="Enter your Address" required>
+
+
+
+
+        <button type="submit" (click)="method2()">Booking </button>
+    </form>
+
+    <table id="bookingTable">
+        <thead>
+            <tr>
+                <th>Event Name</th>
+                <th>Date</th>
+                
+                <th>Time</th>
+                <th>Participant</th>
+                <th>phone No</th>
+                <th>email id</th>
+                <th>Address</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Booked events will appear here -->
+        </tbody>
+    </table>
+</div>
+
+<script>
+    document.getElementById('bookingForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const eventName = document.getElementById('eventName').value;
+        const eventDate = document.getElementById('eventDate').value;
+        const eventTime = document.getElementById('eventTime').value;
+        const participantName = document.getElementById('participantName').value;
+        const phoneNo = document.getElementById('phoneNo').value;
+        const emailId = document.getElementById('emailId').value;
+        const Address = document.getElementById('Address').value;
+
+
+
+        const tableBody = document.getElementById('bookingTable').querySelector('tbody');
+
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${eventName}</td>
+            <td>${eventDate}</td>
+            <td>${eventTime}</td>
+            <td>${participantName}</td>
+             <td>${phoneNo}</td>
+              <td>${emailId}</td>
+               <td>${Address}</td>
+        `;
+
+        tableBody.appendChild(row);
+
+        // Clear the form
+        document.getElementById('bookingForm').reset();
+    });
+</script>
